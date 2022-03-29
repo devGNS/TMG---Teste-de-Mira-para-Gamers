@@ -22,7 +22,7 @@ export class GameComponent implements OnInit {
       await this.temporizador(1000).then(() => {
         this.marginLeft = Math.random() * 100;
         this.marginTop = Math.random() * 100;
-        this.contador = this.contador - 1;
+        this.contador = this.contador - 1
         console.log(this.contador);
         if(this.contador >0){
           this.mudaPosicao();
