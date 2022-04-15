@@ -7,8 +7,20 @@
   .toolbar{
       background-color: rgb(56, 47, 47);
       color: white;
-      //display: flex;
-     // justify-content: space-between;
-      //align-items: center;
+      position: sticky;
+      z-index: 999;
+      top: 0;
+
+  }
+
+  .spacer1{
+    flex: 20 1 auto;
+  }
+
+  .spacer2{
+    margin-right: 20px;
+  }
+  button{
+    cursor: pointer;
   }
 

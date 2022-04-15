@@ -1,5 +1,9 @@
 <div class="div_container">
-<button mat-icon-button  >
-  <mat-icon>noise_aware</mat-icon>
-</button>
+  <h3>Acertos: {{qtdeAcertos}}</h3>
+  <h3>Tempo restante : {{tempoRestante}}</h3>
+  <div >
+    <button (click)="clickBotao()" mat-icon-button [ngStyle]="{'margin-left': marginLeft + '%','margin-top': marginTop + 'px'}" >
+      <mat-icon>noise_aware</mat-icon>
+    </button>
+  </div>
 </div>
