@@ -8,6 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSliderModule} from '@angular/material/slider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GameComponent } from './pages/game/game.component';
 
@@ -23,6 +24,7 @@ import { GameComponent } from './pages/game/game.component';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    MatSliderModule,
     FlexLayoutModule,
 
   ],

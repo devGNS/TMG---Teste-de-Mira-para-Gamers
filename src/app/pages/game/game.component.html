@@ -1,9 +1,28 @@
 <div class="div_container">
-  <h3>Acertos: {{qtdeAcertos}}</h3>
-  <h3>Tempo restante : {{tempoRestante}}</h3>
+  <div class="subHeader"  fxLayout="row" fxLayoutAlign="space-around center">
+
+    <span>Acertos: {{qtdeAcertos}}</span>
+    <div>
+      <span>Tamanho do alvo </span>
+    <mat-slider thumbLabel   min="1" max="5" step="1" [value]="tamanhoAlvo" (change)="atualizaTamanhoAlvo($event)" ></mat-slider>
+    </div>
+
+    <span>Tempo de reação (s): </span>
+    <mat-slider thumbLabel  min="0.4" max="2" step="0.1" [value]="ajusteTempoReacao" (change)="atualizaVelocidade($event)" ></mat-slider>
+
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <mat-icon>timer</mat-icon>
+      <strong [ngStyle]="{'color': tempoRestante > 10 ? 'black' : 'red' }"> {{tempoRestante}} s</strong>
+    </div>
+    <button mat-flat-button color="warn" (click)="iniciarPartida()">Jogar</button>
+  </div>
+
   <div >
     <button (click)="clickBotao()" mat-icon-button [ngStyle]="{'margin-left': marginLeft + '%','margin-top': marginTop + 'px'}" >
-      <mat-icon>noise_aware</mat-icon>
+      <mat-icon id="alvo">noise_aware</mat-icon>
     </button>
   </div>
+
+
 </div>

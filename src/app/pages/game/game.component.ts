@@ -16,36 +16,42 @@ import { Component, OnInit } from '@angular/core';
   marginTopVet: number[] = [];
   posicaoAtual: number = 0;
   qtdeAcertos:number = 0;
-
+  tamanhoAlvo = 4;
+  ajusteTempoReacao = 1;
   constructor() {}
 
   ngOnInit(): void {
     this.preencheVetor();
-    this.temporizadorTempoTotal();
-    this.temporizador(this.posicaoAtual, this.tempo);
   }
 
   preencheVetor(){
     console.log('teste');
 
     for(let i = 0 ; i<200 ; i++){
-      this.marginLeftVet.push( Math.random() * 100);
+      this.marginLeftVet.push( Math.random() * 98);
       this.marginTopVet.push(Math.random() * 500);
       i++;
       console.log(i);
     }
   }
 
+  iniciarPartida(){
+    this.temporizadorTempoTotal();
+    this.temporizador(this.posicaoAtual, this.tempo);
+  }
+
   clickBotao(){
-    this.qtdeAcertos++;
-    this.mudaPosicao();
+    if(this.tempoRestante>0){
+      this.qtdeAcertos++;
+      this.mudaPosicao();
+    }
   }
 
    mudaPosicao() {
       this.posicaoAtual++;
       this.marginLeft = this.marginLeftVet[this.posicaoAtual];
       this.marginTop = this.marginTopVet[this.posicaoAtual];
-      this.temporizador(this.posicaoAtual, this.tempo);
+      this.temporizador(this.posicaoAtual, this.ajusteTempoReacao*1000);
   }
 
    temporizador(posicaoRecebida: number, tempo: number) {
@@ -63,6 +69,15 @@ import { Component, OnInit } from '@angular/core';
         this.temporizadorTempoTotal();
       }
     }, 1000)
+  }
+
+
+  atualizaTamanhoAlvo(evento:any){
+    this.tamanhoAlvo = evento.value;
+  }
+
+  atualizaVelocidade(evento:any){
+    this.ajusteTempoReacao = evento.value;
   }
 
 
