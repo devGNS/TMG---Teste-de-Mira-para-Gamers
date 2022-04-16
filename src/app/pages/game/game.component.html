@@ -1,4 +1,4 @@
-<div class="div_container">
+<div >
   <div class="subHeader"  fxLayout="row" fxLayoutAlign="space-around center">
 
     <span>Acertos: {{qtdeAcertos}}</span>
@@ -17,9 +17,10 @@
     </div>
     <button mat-flat-button color="warn" (click)="iniciarPartida()">Jogar</button>
   </div>
+  <mat-divider></mat-divider>
 
-  <div >
-    <button (click)="clickBotao()" mat-icon-button [ngStyle]="{'margin-left': marginLeft + '%','margin-top': marginTop + 'px'}" >
+  <div class="areaGame">
+    <button (click)="clickBotao()" mat-icon-button [ngStyle]="{'margin-left': marginLeft + '%','margin-top': marginTop + 'px' , 'width': tamanhoAlvo + 'px !important'}" >
       <mat-icon id="alvo">noise_aware</mat-icon>
     </button>
   </div>

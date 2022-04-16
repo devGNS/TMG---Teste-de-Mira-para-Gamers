@@ -73,7 +73,7 @@ import { Component, OnInit } from '@angular/core';
 
 
   atualizaTamanhoAlvo(evento:any){
-    this.tamanhoAlvo = evento.value;
+    this.tamanhoAlvo = 24 + 3 * evento.value;
   }
 
   atualizaVelocidade(evento:any){
