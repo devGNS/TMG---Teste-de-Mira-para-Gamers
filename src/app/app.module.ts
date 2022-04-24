@@ -1,3 +1,4 @@
+import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,17 +12,19 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatInputModule} from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GameComponent } from './pages/game/game.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'game', pathMatch: 'full'},
   {path: 'game', component: GameComponent },
-  {path: '**', redirectTo: 'users'},
+  {path: 'login', component: LoginComponent },
+  {path: '**', redirectTo: 'game'},
 ]
 @NgModule({
   declarations: [
-    AppComponent,HeaderComponent, GameComponent, GameComponent
+    AppComponent,HeaderComponent, GameComponent, LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ const routes: Routes = [
     MatMenuModule,
     MatSliderModule,
     MatDividerModule,
+    MatInputModule,
     FlexLayoutModule,
     RouterModule.forRoot(routes),
 

@@ -15,9 +15,9 @@
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #profileMenu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>login</mat-icon>
-      <span>Logar</span>
+    <button mat-menu-item (click)="navigateToLogin()" >
+        <mat-icon>login</mat-icon>
+        <span>Logar</span>
     </button>
     <button mat-menu-item>
       <mat-icon>person_add</mat-icon>
