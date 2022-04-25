@@ -1,7 +1,7 @@
 <div >
   <div class="subHeader"  fxLayout="row" fxLayoutAlign="space-around center">
 
-    <span>Acertos: {{qtdeAcertos}}</span>
+    <span style="color: rgb(60, 168, 60);"> <b>ACERTOS: {{qtdeAcertos}}</b></span>
     <div>
       <span>Tamanho do alvo </span>
     <mat-slider thumbLabel   min="1" max="5" step="1" [value]="tamanhoAlvo" (change)="atualizaTamanhoAlvo($event)" ></mat-slider>
@@ -22,8 +22,12 @@
   <div class="areaGame">
     <button (click)="clickBotao()" mat-icon-button [ngStyle]="{'margin-left': marginLeft + '%','margin-top': marginTop + 'px' , 'width': tamanhoAlvo + 'px !important'}" >
       <mat-icon id="alvo">noise_aware</mat-icon>
+      <!-- <img src="../../../../Desenho-de-Alvo-PNG-1024x1024.png" alt="mira"> -->
     </button>
   </div>
 
-
 </div>
+<!-- <div *ngIf="contadorRegressivo > 0" class="div-contagem-regressiva">
+  <h1>Prepare-se !</h1>
+  <h1>{{contadorRegressivo}}</h1>
+</div> -->

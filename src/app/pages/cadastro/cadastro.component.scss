@@ -1,0 +1,42 @@
+// ::ng-deep body{
+//   //background-color: rgb(60, 73, 73);
+//   background-image: linear-gradient(to bottom, rgb(60, 73, 73), rgb(56, 47, 47), );
+// }
+
+.boas-vindas{
+  color: white;
+  text-align: center;
+  background-image: linear-gradient(to right, rgb(60, 73, 73), rgb(56, 47, 47), );
+  height: 100vh;
+  padding-top: 200px;
+
+  h1{
+    font-size: 30px;
+  }
+  h4{
+    margin-top: 40px;
+    font-size: 20px;
+  }
+
+}
+.envelope{
+
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  background-color: white;
+
+  h1{
+    font-size: 32px;
+    font-weight:400;
+  }
+}
+
+.example-full-width{
+  width: 70%;
+}
+
+.button-cadastrar{
+  width: 90px !important;
+}

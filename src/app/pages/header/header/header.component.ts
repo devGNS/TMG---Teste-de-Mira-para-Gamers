@@ -14,8 +14,19 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  navigateToGame(){
+    this.router.navigate(['/game']);
+  }
+
   navigateToLogin(){
     this.router.navigate(['/login']);
   }
 
+  navigateToCadastro(){
+    this.router.navigate(['/cadastro']);
+  }
+
+  navigateToEstatisticas(){
+    this.router.navigate(['/estatisticas']);
+  }
 }

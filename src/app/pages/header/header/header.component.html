@@ -1,12 +1,12 @@
 <mat-toolbar class="toolbar">
-  <button mat-icon-button aria-label="Example icon button with a home icon">
-    <mat-icon>manage_accounts</mat-icon>
+  <button mat-icon-button aria-label="Example icon button with a home icon" (click)="navigateToGame()">
+    <mat-icon>api</mat-icon>GAME
   </button>
 
   <span class="spacer1"></span>
 
-  <button mat-icon-button>
-    <mat-icon>insights</mat-icon>
+  <button mat-icon-button (click)="navigateToEstatisticas()">
+    <mat-icon>leaderboard</mat-icon>
   </button>
 
   <span class="spacer2"></span>
@@ -19,7 +19,7 @@
         <mat-icon>login</mat-icon>
         <span>Logar</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="navigateToCadastro()">
       <mat-icon>person_add</mat-icon>
       <span>Registrar</span>
     </button>

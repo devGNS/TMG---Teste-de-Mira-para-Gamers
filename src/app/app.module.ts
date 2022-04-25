@@ -15,16 +15,18 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatInputModule} from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GameComponent } from './pages/game/game.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'game', pathMatch: 'full'},
   {path: 'game', component: GameComponent },
   {path: 'login', component: LoginComponent },
+  {path: 'cadastro', component: CadastroComponent },
   {path: '**', redirectTo: 'game'},
 ]
 @NgModule({
   declarations: [
-    AppComponent,HeaderComponent, GameComponent, LoginComponent
+    AppComponent,HeaderComponent, GameComponent, LoginComponent, CadastroComponent
   ],
   imports: [
     BrowserModule,

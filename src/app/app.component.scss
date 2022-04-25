@@ -2,3 +2,8 @@
     background-color: black;
     color: white;
 }
+
+::ng-deep body{
+  //background-color: rgb(60, 73, 73);
+  background-color: white;
+}

@@ -1,20 +1,36 @@
 ::ng-deep body{
-  background-color: rgb(60, 73, 73);
+  //background-color: rgb(60, 73, 73);
+  //background-image: linear-gradient(to bottom, rgb(60, 73, 73), rgb(56, 47, 47), );
+  //position: fixed; top: 0;
+}
+
+.pagina{
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(to bottom, rgb(60, 73, 73), rgb(56, 47, 47), );
+  padding-top: 10%;
 }
 .envelope{
   width: 400px;
   height: 300px;
   margin: auto;
-  margin-top: 15%;
   text-align: center;
   border: solid 1px black;
   border-radius: 15px 2px 15px 2px;
   padding-top: 60px;
   background-color: white;
+
+  h1{
+    font-size: 32px;
+    font-weight:400;
+  }
 }
 
 .example-full-width{
   width: 80%;
+}
+.button-login{
+  width: 90px !important;
 }
 
 

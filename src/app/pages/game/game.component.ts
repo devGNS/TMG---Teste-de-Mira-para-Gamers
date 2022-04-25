@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   marginTop: number = 0;
   marginLeft: number = 0;
   margins:string='';
-  tempo : number = 800;
+  tempo : number = 1000;
   contador: number = 0;
   tempoRestante: number = 30;
   marginLeftVet: number[] = [];
@@ -18,24 +18,31 @@ import { Component, OnInit } from '@angular/core';
   qtdeAcertos:number = 0;
   tamanhoAlvo = 4;
   ajusteTempoReacao = 1;
+  contadorRegressivo = 0;
+
   constructor() {}
 
   ngOnInit(): void {
-    this.preencheVetor();
+
   }
 
   preencheVetor(){
     console.log('teste');
 
     for(let i = 0 ; i<200 ; i++){
-      this.marginLeftVet.push( Math.random() * 98);
-      this.marginTopVet.push(Math.random() * 500);
+      this.marginLeftVet.push( Math.random() * 95);
+      this.marginTopVet.push(Math.random() * 480);
       i++;
       console.log(i);
     }
   }
 
   iniciarPartida(){
+    this.preencheVetor();
+    this.qtdeAcertos = 0;
+    this.tempoRestante = 30;
+    this.contadorRegressivo = 5;
+    this.contagemRegressiva(this.contadorRegressivo);
     this.temporizadorTempoTotal();
     this.temporizador(this.posicaoAtual, this.tempo);
   }
@@ -52,6 +59,19 @@ import { Component, OnInit } from '@angular/core';
       this.marginLeft = this.marginLeftVet[this.posicaoAtual];
       this.marginTop = this.marginTopVet[this.posicaoAtual];
       this.temporizador(this.posicaoAtual, this.ajusteTempoReacao*1000);
+  }
+
+  contagemRegressiva(contadorRegressivo : number){
+    setTimeout(() => {
+      if(contadorRegressivo >0){
+        contadorRegressivo--;
+        this.contagemRegressiva(contadorRegressivo );
+      }
+      // else if(contadorRegressivo == 0){
+      //   this.temporizadorTempoTotal();
+      //   this.temporizador(this.posicaoAtual, this.tempo);
+      // }
+    }, 1000)
   }
 
    temporizador(posicaoRecebida: number, tempo: number) {
