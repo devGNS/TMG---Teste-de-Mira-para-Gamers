@@ -1,10 +1,10 @@
-<div >
+<div style="position: relative; max-width: 100%; max-height: 60vh;" >
   <div class="subHeader"  fxLayout="row" fxLayoutAlign="space-around center">
 
     <span style="color: rgb(60, 168, 60);"> <b>ACERTOS: {{qtdeAcertos}}</b></span>
     <div>
       <span>Tamanho do alvo </span>
-    <mat-slider thumbLabel   min="1" max="5" step="1" [value]="tamanhoAlvo" (change)="atualizaTamanhoAlvo($event)" ></mat-slider>
+    <mat-slider thumbLabel   min="1" max="5" step="1" [value]="slidertamanhoAlvo" (change)="atualizaTamanhoAlvo($event)" ></mat-slider>
     </div>
 
     <span>Tempo de reação (s): </span>
@@ -15,14 +15,15 @@
       <mat-icon>timer</mat-icon>
       <strong [ngStyle]="{'color': tempoRestante > 10 ? 'black' : 'red' }"> {{tempoRestante}} s</strong>
     </div>
-    <button mat-flat-button color="warn" (click)="iniciarPartida()">Jogar</button>
+    <button mat-flat-button color="warn" (click)="iniciarPartida()" >Jogar</button>
+    <!-- <button mat-flat-button color="warn" (click)="finalizarPartida()" *ngIf="onGame">Parar</button> -->
   </div>
   <mat-divider></mat-divider>
 
   <div class="areaGame">
     <button (click)="clickBotao()" mat-icon-button [ngStyle]="{'margin-left': marginLeft + '%','margin-top': marginTop + 'px' , 'width': tamanhoAlvo + 'px !important'}" >
-      <mat-icon id="alvo">noise_aware</mat-icon>
-      <!-- <img src="../../../../Desenho-de-Alvo-PNG-1024x1024.png" alt="mira"> -->
+      <!-- <mat-icon id="alvo" [ngStyle]="{'width': tamanhoAlvo + 'px'}">noise_aware</mat-icon> -->
+      <img class="imagem-mira" src="../../../assets/images/Desenho-de-Alvo-PNG-1024x1024.png" alt="mira"  [ngStyle]="{'width': tamanhoAlvo + 'px'}">
     </button>
   </div>
 

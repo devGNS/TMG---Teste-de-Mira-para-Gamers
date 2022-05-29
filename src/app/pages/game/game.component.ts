@@ -16,7 +16,8 @@ import { Component, OnInit } from '@angular/core';
   marginTopVet: number[] = [];
   posicaoAtual: number = 0;
   qtdeAcertos:number = 0;
-  tamanhoAlvo = 4;
+  slidertamanhoAlvo = 5;
+  tamanhoAlvo = 60;
   ajusteTempoReacao = 1;
   contadorRegressivo = 0;
 
@@ -30,14 +31,15 @@ import { Component, OnInit } from '@angular/core';
     console.log('teste');
 
     for(let i = 0 ; i<200 ; i++){
-      this.marginLeftVet.push( Math.random() * 95);
-      this.marginTopVet.push(Math.random() * 480);
+      this.marginLeftVet.push( Math.random() * 90);
+      this.marginTopVet.push(Math.random() * 440);
       i++;
       console.log(i);
     }
   }
 
   iniciarPartida(){
+
     this.preencheVetor();
     this.qtdeAcertos = 0;
     this.tempoRestante = 30;
@@ -93,7 +95,9 @@ import { Component, OnInit } from '@angular/core';
 
 
   atualizaTamanhoAlvo(evento:any){
-    this.tamanhoAlvo = 24 + 3 * evento.value;
+    this.tamanhoAlvo = 60 +  (evento.value-5) * 10;
+    console.log(this.tamanhoAlvo);
+
   }
 
   atualizaVelocidade(evento:any){

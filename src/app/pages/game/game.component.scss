@@ -8,9 +8,13 @@
 }
 
 .areaGame{
-  width: 100%;
+  position: relative;
+  background-color: rgb(58, 62, 75);
+  border: rgb(51, 27, 44) 5px solid;
+  width: 95%;
+  margin: auto;
   margin-top: 0;
-  height: 50vh;
+  height: 510px;
  // border: solid 2px black;
 }
 
@@ -20,4 +24,8 @@
   position: absolute;
   margin: auto;
   border: 1px black;
+}
+
+.imagem-mira{
+  width: 50px;
 }
