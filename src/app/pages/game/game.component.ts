@@ -20,6 +20,7 @@ import { Component, OnInit } from '@angular/core';
   tamanhoAlvo = 60;
   ajusteTempoReacao = 1;
   contadorRegressivo = 0;
+  partidaEmAndamento = false;
 
   constructor() {}
 
@@ -39,18 +40,21 @@ import { Component, OnInit } from '@angular/core';
   }
 
   iniciarPartida(){
+    if(this.partidaEmAndamento === false){
+      this.partidaEmAndamento = true;
+      this.preencheVetor();
+      this.qtdeAcertos = 0;
+      this.tempoRestante = 30;
+      this.contadorRegressivo = 5;
+      this.contagemRegressivaInicial(this.contadorRegressivo);
+      this.temporizadorTempoTotal();
+      this.temporizadorPosicao(this.posicaoAtual, this.tempo);
+    }
 
-    this.preencheVetor();
-    this.qtdeAcertos = 0;
-    this.tempoRestante = 30;
-    this.contadorRegressivo = 5;
-    this.contagemRegressiva(this.contadorRegressivo);
-    this.temporizadorTempoTotal();
-    this.temporizador(this.posicaoAtual, this.tempo);
   }
 
   clickBotao(){
-    if(this.tempoRestante>0){
+    if(this.tempoRestante>0 && this.partidaEmAndamento ===true){
       this.qtdeAcertos++;
       this.mudaPosicao();
     }
@@ -60,14 +64,14 @@ import { Component, OnInit } from '@angular/core';
       this.posicaoAtual++;
       this.marginLeft = this.marginLeftVet[this.posicaoAtual];
       this.marginTop = this.marginTopVet[this.posicaoAtual];
-      this.temporizador(this.posicaoAtual, this.ajusteTempoReacao*1000);
+      this.temporizadorPosicao(this.posicaoAtual, this.ajusteTempoReacao*1000);
   }
 
-  contagemRegressiva(contadorRegressivo : number){
+  contagemRegressivaInicial(contadorRegressivo : number){
     setTimeout(() => {
       if(contadorRegressivo >0){
         contadorRegressivo--;
-        this.contagemRegressiva(contadorRegressivo );
+        this.contagemRegressivaInicial(contadorRegressivo );
       }
       // else if(contadorRegressivo == 0){
       //   this.temporizadorTempoTotal();
@@ -76,9 +80,9 @@ import { Component, OnInit } from '@angular/core';
     }, 1000)
   }
 
-   temporizador(posicaoRecebida: number, tempo: number) {
+  temporizadorPosicao(posicaoRecebida: number, tempo: number) {
     setTimeout(() => {
-    if((this.posicaoAtual == posicaoRecebida) && this.tempoRestante>0){
+    if((this.posicaoAtual == posicaoRecebida) && this.tempoRestante>0 && this.partidaEmAndamento===true){
       this.mudaPosicao();
     }
     }, tempo)
@@ -86,24 +90,32 @@ import { Component, OnInit } from '@angular/core';
 
   temporizadorTempoTotal(){
     setTimeout(()=> {
-      if(this.tempoRestante > 0){
+      if(this.tempoRestante > 0 && this.partidaEmAndamento===true){
         this.tempoRestante--;
         this.temporizadorTempoTotal();
+      }else{
+        this.partidaEmAndamento=false;
       }
     }, 1000)
   }
 
 
   atualizaTamanhoAlvo(evento:any){
-    this.tamanhoAlvo = 60 +  (evento.value-5) * 10;
-    console.log(this.tamanhoAlvo);
-
+    if(this.partidaEmAndamento ===false){
+      this.tamanhoAlvo = 60 +  (evento.value-5) * 10;
+      console.log(this.tamanhoAlvo);
+    }
   }
 
   atualizaVelocidade(evento:any){
-    this.ajusteTempoReacao = evento.value;
+    if(this.partidaEmAndamento ===false){
+      this.ajusteTempoReacao = evento.value;
+    }
   }
 
+  finalizarPartida(){
+    this.partidaEmAndamento=false;
+  }
 
 }
 

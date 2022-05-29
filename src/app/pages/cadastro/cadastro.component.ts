@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {MediaMatcher} from '@angular/cdk/layout'
 
 @Component({
   selector: 'app-cadastro',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroComponent implements OnInit {
 
-  constructor() { }
+  userForm : FormGroup;
+
+  constructor(private _fb : FormBuilder,
+    private readonly media: MediaMatcher) {
+
+     }
+
+
 
   ngOnInit() {
+  }
+
+  createUserForm(){
+    this.userForm = this._fb.group({
+      usuario: ['', [Validators.required], Validators.minLength(3)],
+      email:['', [Validators.required, Validators.email]],
+      senha:['', [Validators.required, Validators.minLength(6)]],
+    })
   }
 
 }
