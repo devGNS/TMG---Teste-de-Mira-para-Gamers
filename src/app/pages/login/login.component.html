@@ -3,23 +3,23 @@
   <div class="envelope">
     <h1>Faça seu Login</h1>
 
-    <form >
+    <form [formGroup]="userForm">
 
       <div>
         <mat-form-field class="example-full-width" appearance="outline" style="margin-top: 20px;">
           <mat-label>Usuário</mat-label>
-          <input matInput formControlName="user" >
+          <input matInput formControlName="email" >
         </mat-form-field>
       </div>
 
       <div>
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Senha</mat-label>
-          <input matInput formControlName="password"  type="password">
+          <input matInput formControlName="senha"  type="password">
         </mat-form-field>
       </div>
 
-      <button mat-raised-button color="primary" class="button-login">Login</button>
+      <button mat-raised-button color="primary" class="button-login" (click)="verifyUser()">Login</button>
 
     </form>
   </div>

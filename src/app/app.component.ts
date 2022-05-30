@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TMG123';
+
+  constructor(){
+    localStorage.setItem('user', '');
+
+  }
 }
