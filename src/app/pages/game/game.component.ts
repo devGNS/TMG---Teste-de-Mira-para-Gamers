@@ -1,4 +1,7 @@
+import { UserService } from './../../../services/user.service';
+
 import { Component, OnInit } from '@angular/core';
+import { GameDto } from 'src/DTO/game.dto';
 
 @Component({
   selector: 'app-game',
@@ -16,13 +19,15 @@ import { Component, OnInit } from '@angular/core';
   marginTopVet: number[] = [];
   posicaoAtual: number = 0;
   qtdeAcertos:number = 0;
-  slidertamanhoAlvo = 5;
-  tamanhoAlvo = 60;
-  ajusteTempoReacao = 1;
-  contadorRegressivo = 0;
+  slidertamanhoAlvo:number = 5;
+  tamanhoAlvo:number = 60;
+  ajusteTempoReacao:number = 1;
+  contadorRegressivo:number = 0;
   partidaEmAndamento = false;
 
-  constructor() {}
+  gameInfo : GameDto;
+
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
 
@@ -73,10 +78,6 @@ import { Component, OnInit } from '@angular/core';
         contadorRegressivo--;
         this.contagemRegressivaInicial(contadorRegressivo );
       }
-      // else if(contadorRegressivo == 0){
-      //   this.temporizadorTempoTotal();
-      //   this.temporizador(this.posicaoAtual, this.tempo);
-      // }
     }, 1000)
   }
 
@@ -95,6 +96,24 @@ import { Component, OnInit } from '@angular/core';
         this.temporizadorTempoTotal();
       }else{
         this.partidaEmAndamento=false;
+        let jsonData = localStorage.getItem('user');
+        if(jsonData){
+          const obj =  JSON.parse(jsonData);
+
+
+          this.gameInfo = {
+            userId: obj.id,
+            targetSize:this.tamanhoAlvo ,
+            reactionTime: this.ajusteTempoReacao,
+            hits: this.qtdeAcertos,
+            modality: "normal",
+          }
+
+          console.log('gameInfo-->', this.gameInfo);
+          console.log('jsonId', jsonData);
+          this.userService.saveGameInfo(this.gameInfo);
+
+        }
       }
     }, 1000)
   }

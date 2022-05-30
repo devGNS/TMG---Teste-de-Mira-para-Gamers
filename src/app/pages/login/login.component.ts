@@ -44,10 +44,8 @@ export class LoginComponent implements OnInit {
        this.userService.verificarLogin(filter).pipe(take(1)).subscribe(user => {
          this.userReceived = user;
          if(this.userReceived){
-          const jsonData = JSON.stringify(this.userReceived)
+          let jsonData = JSON.stringify(this.userReceived)
           localStorage.setItem('user', jsonData)
-          console.log('localStorage',localStorage.getItem('user'));
-
          }
 
          console.log(this.userReceived);

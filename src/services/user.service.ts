@@ -1,3 +1,5 @@
+import { GameDto } from './../DTO/game.dto';
+import { GameModel } from './../DTO/game.model';
 import { ResponseLogin } from './../DTO/response-login-back-end.dto';
 import { catchError, Observable } from 'rxjs';
 import { UserLogin } from './../DTO/user-login.dto';
@@ -23,7 +25,12 @@ export class UserService {
 
   }
 
-  //Fiz essa aqui pra testar:
+  saveGameInfo(dto : GameDto){
+    return  firstValueFrom(  this.http.post<GameModel>('game',dto));
+
+  }
+
+
   listarUsuarios() {
     this.http.get<UserBackEndResponse[]>('user')
              .subscribe(resultado => console.log(resultado));

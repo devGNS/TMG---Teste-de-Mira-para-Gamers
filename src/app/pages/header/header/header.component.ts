@@ -1,3 +1,4 @@
+import { UserService } from './../../../../services/user.service';
 import { Component, OnInit,  Input } from '@angular/core';
 import {Router} from '@angular/router'
 
@@ -9,10 +10,11 @@ import {Router} from '@angular/router'
 export class HeaderComponent implements OnInit {
 
   @Input() newTitle : any;
-  constructor(private readonly router: Router) { }
+  constructor(private readonly router: Router,  private userService: UserService) { }
 
   ngOnInit(): void {
   }
+
 
   navigateToGame(){
     this.router.navigate(['/game']);

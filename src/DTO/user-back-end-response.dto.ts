@@ -1,9 +1,9 @@
-import { GameDto } from './game.dto';
+import {  GameModel } from './game.model';
 export interface UserBackEndResponse{
   email: string,
 	usuario: string,
 	senha: string,
-  game: GameDto[],
+  game: GameModel[],
 	id:number,
 	createAt: string,
 	updateAt: string,
