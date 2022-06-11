@@ -10,6 +10,7 @@
   </button>
 
   <span class="spacer2"></span>
+  <span *ngIf="loggedUser">{{'Olá, '+ loggedUser}}</span>
 
   <button mat-icon-button [matMenuTriggerFor]="profileMenu">
     <mat-icon>account_circle</mat-icon>

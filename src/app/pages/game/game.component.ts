@@ -30,7 +30,7 @@ import { GameDto } from 'src/DTO/game.dto';
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-
+    this.userService.listarUsuarios();
   }
 
   preencheVetor(){
@@ -40,7 +40,6 @@ import { GameDto } from 'src/DTO/game.dto';
       this.marginLeftVet.push( Math.random() * 90);
       this.marginTopVet.push(Math.random() * 440);
       i++;
-      console.log(i);
     }
   }
 
@@ -49,7 +48,7 @@ import { GameDto } from 'src/DTO/game.dto';
       this.partidaEmAndamento = true;
       this.preencheVetor();
       this.qtdeAcertos = 0;
-      this.tempoRestante = 30;
+      this.tempoRestante = 10;
       this.contadorRegressivo = 5;
       this.contagemRegressivaInicial(this.contadorRegressivo);
       this.temporizadorTempoTotal();
@@ -95,7 +94,7 @@ import { GameDto } from 'src/DTO/game.dto';
         this.tempoRestante--;
         this.temporizadorTempoTotal();
       }else{
-        this.partidaEmAndamento=false;
+       if( this.partidaEmAndamento==true){
         let jsonData = localStorage.getItem('user');
         if(jsonData){
           const obj =  JSON.parse(jsonData);
@@ -103,7 +102,7 @@ import { GameDto } from 'src/DTO/game.dto';
 
           this.gameInfo = {
             userId: obj.id,
-            targetSize:this.tamanhoAlvo ,
+            targetSize:this.slidertamanhoAlvo ,
             reactionTime: this.ajusteTempoReacao,
             hits: this.qtdeAcertos,
             modality: "normal",
@@ -114,6 +113,8 @@ import { GameDto } from 'src/DTO/game.dto';
           this.userService.saveGameInfo(this.gameInfo);
 
         }
+       }
+       this.partidaEmAndamento=false;
       }
     }, 1000)
   }

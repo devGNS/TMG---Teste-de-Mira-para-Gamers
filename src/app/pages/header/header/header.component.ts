@@ -1,6 +1,7 @@
 import { UserService } from './../../../../services/user.service';
 import { Component, OnInit,  Input } from '@angular/core';
 import {Router} from '@angular/router'
+import { ResponseLogin } from 'src/DTO/response-login-back-end.dto';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,19 @@ import {Router} from '@angular/router'
 export class HeaderComponent implements OnInit {
 
   @Input() newTitle : any;
+
+  loggedUser :  string;
+
   constructor(private readonly router: Router,  private userService: UserService) { }
 
   ngOnInit(): void {
+
+    this.userService.loggedUser.subscribe(user => {
+      this.loggedUser = user.usuario;
+      console.log("no Header, usuario", user);
+
+    })
+    this.userService.getLoggedUser();
   }
 
 

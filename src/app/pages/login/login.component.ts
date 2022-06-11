@@ -33,6 +33,26 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // verifyUser() {
+  //   if (this.userForm.valid) {
+  //     console.log('verify-user');
+
+  //     const filter = {
+  //       username: this.userForm.controls['email'].value,
+  //       password: this.userForm.controls['senha'].value,
+  //     };
+  //      this.userService.verificarLogin(filter).pipe(take(1)).subscribe(user => {
+  //        this.userReceived = user;
+  //        if(this.userReceived){
+  //         let jsonData = JSON.stringify(this.userReceived)
+  //         localStorage.setItem('user', jsonData)
+  //        }
+
+  //        console.log(this.userReceived);
+  //      })
+  //   }
+  // }
+
   verifyUser() {
     if (this.userForm.valid) {
       console.log('verify-user');
@@ -41,15 +61,7 @@ export class LoginComponent implements OnInit {
         username: this.userForm.controls['email'].value,
         password: this.userForm.controls['senha'].value,
       };
-       this.userService.verificarLogin(filter).pipe(take(1)).subscribe(user => {
-         this.userReceived = user;
-         if(this.userReceived){
-          let jsonData = JSON.stringify(this.userReceived)
-          localStorage.setItem('user', jsonData)
-         }
-
-         console.log(this.userReceived);
-       })
+       this.userService.verificarLogin(filter);
     }
   }
 }

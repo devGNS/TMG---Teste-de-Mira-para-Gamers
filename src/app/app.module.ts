@@ -21,17 +21,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './interceptors/api.interceptor';
+import { EstatisticasComponent } from './pages/estatisticas/estatisticas.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'game', pathMatch: 'full'},
   {path: 'game', component: GameComponent },
   {path: 'login', component: LoginComponent },
   {path: 'cadastro', component: CadastroComponent },
+  {path: 'estatisticas', component: EstatisticasComponent},
   {path: '**', redirectTo: 'game'},
 ]
 @NgModule({
   declarations: [
-    AppComponent,HeaderComponent, GameComponent, LoginComponent, CadastroComponent
+    AppComponent,HeaderComponent, GameComponent, LoginComponent, CadastroComponent, EstatisticasComponent
   ],
   imports: [
     HttpClientModule,
