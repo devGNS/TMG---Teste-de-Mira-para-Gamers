@@ -61,7 +61,8 @@ export class LoginComponent implements OnInit {
         username: this.userForm.controls['email'].value,
         password: this.userForm.controls['senha'].value,
       };
-       this.userService.verificarLogin(filter);
+       this.userService.verificarLogin(filter)
+       //this.alertService.success('Deu certo');
     }
   }
 }

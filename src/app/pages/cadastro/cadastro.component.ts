@@ -1,3 +1,5 @@
+import { AlertService } from './../../../services/alert.service';
+import { Router } from '@angular/router';
 import { UserService } from './../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,7 +17,9 @@ export class CadastroComponent implements OnInit {
 
   constructor(private _fb : FormBuilder,
     private readonly media: MediaMatcher,
-    private userService: UserService) {
+    private userService: UserService,
+    private readonly router: Router,
+    private readonly alertService: AlertService) {
 
      }
 
@@ -41,7 +45,11 @@ export class CadastroComponent implements OnInit {
       }
       console.log("userForm-->", filter);
 
-      this.userService.createUser(filter);
+      this.userService.createUser(filter)
+      .then(res => {this.alertService.success('Usuário criado com sucesso');
+      this.router.navigate(['/game']);
+    })
+      .catch(res => this.alertService.error('Não foi possível criar o usuário'));
 
     }
   }

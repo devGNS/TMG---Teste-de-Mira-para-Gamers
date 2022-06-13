@@ -1,3 +1,4 @@
+import { AlertService } from './alert.service';
 import { GameDto } from './../DTO/game.dto';
 import { GameModel } from './../DTO/game.model';
 import { ResponseLogin } from './../DTO/response-login-back-end.dto';
@@ -8,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreateUpdateUserDto } from 'src/DTO/create-user.dto';
 import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -15,7 +17,9 @@ import { firstValueFrom } from 'rxjs';
 })
 export class UserService {
 
-  constructor(private readonly http: HttpClient) {
+  constructor(private readonly router: Router,
+    private readonly http: HttpClient,
+    private alertService: AlertService) {
   }
 
   user = '';
@@ -56,7 +60,11 @@ export class UserService {
          this.loggedUser.next(user);
         }
         console.log(this.userReceived);
-      })
+        this.alertService.success('Usuário logado com sucesso!');
+        this.router.navigate(['/game']);
+      }, err =>{ console.log('HTTP Error', err);
+      this.alertService.error('Não foi possível fazer o LOGIN, verifique os dados digitados')
+    },)
   }
 
   getLoggedUser(){

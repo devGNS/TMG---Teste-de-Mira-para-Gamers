@@ -1,3 +1,4 @@
+import { AlertComponent } from './pages/alert/alert.component';
 import { UserService } from './../services/user.service';
 import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
@@ -22,7 +23,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './interceptors/api.interceptor';
 import { EstatisticasComponent } from './pages/estatisticas/estatisticas.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 const routes: Routes = [
   {path: '', redirectTo: 'game', pathMatch: 'full'},
   {path: 'game', component: GameComponent },
@@ -33,7 +34,7 @@ const routes: Routes = [
 ]
 @NgModule({
   declarations: [
-    AppComponent,HeaderComponent, GameComponent, LoginComponent, CadastroComponent, EstatisticasComponent
+    AppComponent,HeaderComponent, GameComponent, LoginComponent, CadastroComponent, EstatisticasComponent,AlertComponent
   ],
   imports: [
     HttpClientModule,
@@ -50,6 +51,7 @@ const routes: Routes = [
     MatSliderModule,
     MatDividerModule,
     MatInputModule,
+    MatSnackBarModule,
     FlexLayoutModule,
     RouterModule.forRoot(routes),
 
