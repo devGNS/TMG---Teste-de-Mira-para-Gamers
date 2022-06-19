@@ -3,7 +3,7 @@ export interface UserBackEndResponse{
   email: string,
 	usuario: string,
 	senha: string,
-  game: GameModel[],
+  games: GameModel[],
 	id:number,
 	createAt: string,
 	updateAt: string,

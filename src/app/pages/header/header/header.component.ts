@@ -2,7 +2,7 @@ import { AlertService } from './../../../../services/alert.service';
 import { UserService } from './../../../../services/user.service';
 import { Component, OnInit,  Input } from '@angular/core';
 import {Router} from '@angular/router'
-import { ResponseLogin } from 'src/DTO/response-login-back-end.dto';
+
 
 @Component({
   selector: 'app-header',
@@ -22,8 +22,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
     this.userService.loggedUser.subscribe(user => {
-      this.loggedUser = user.usuario;
-      console.log("no Header, usuario", user);
+      if(user){
+        this.loggedUser = user.usuario;
+        console.log("no Header, usuario", user);
+      }else{
+        this.loggedUser = '';
+      }
+
     })
     this.userService.getLoggedUser();
   }
@@ -42,6 +47,16 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToEstatisticas(){
-    this.router.navigate(['/estatisticas']);
+    if(!this.userService.hasUserLogged()){
+      this.router.navigate(['/login']);
+    }
+    else{
+      this.router.navigate(['/estatisticas']);
+    }
+
+  }
+
+  loggout(){
+    this.userService.loggout();
   }
 }

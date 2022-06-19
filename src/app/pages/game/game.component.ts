@@ -2,6 +2,7 @@ import { UserService } from './../../../services/user.service';
 
 import { Component, OnInit } from '@angular/core';
 import { GameDto } from 'src/DTO/game.dto';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -27,7 +28,7 @@ import { GameDto } from 'src/DTO/game.dto';
 
   gameInfo : GameDto;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.userService.listarUsuarios();
@@ -44,6 +45,10 @@ import { GameDto } from 'src/DTO/game.dto';
   }
 
   iniciarPartida(){
+    if(!this.userService.hasUserLogged()){
+      this.router.navigate(['/login']);
+    }
+
     if(this.partidaEmAndamento === false){
       this.partidaEmAndamento = true;
       this.preencheVetor();
