@@ -9,6 +9,7 @@
         <mat-form-field class="example-full-width" appearance="outline" style="margin-top: 20px;">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" >
+          <mat-error *ngIf="userForm.invalid">Este não é um email válido</mat-error>
         </mat-form-field>
       </div>
 
@@ -16,10 +17,14 @@
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Senha</mat-label>
           <input matInput formControlName="senha"  type="password">
+          <mat-error *ngIf="userForm.invalid">São necessários ao menos 6 caracteres</mat-error>
+
         </mat-form-field>
+        <p> <a routerLink="/cadastro"> Não possui uma conta ainda ?</a></p>
       </div>
 
       <button mat-raised-button color="primary" class="button-login" (click)="verifyUser()">Login</button>
+
 
     </form>
   </div>

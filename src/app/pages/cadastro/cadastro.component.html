@@ -13,12 +13,15 @@
         <mat-form-field  class="example-full-width" appearance="outline" style="margin-top: 20px;">
           <mat-label>Usuário</mat-label>
           <input matInput formControlName="usuario" >
+          <mat-error *ngIf="userForm.invalid">São necessários ao menos 3 caracteres</mat-error>
         </mat-form-field>
       </div>
 
       <mat-form-field class="example-full-width" appearance="outline" >
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" type="email">
+        <mat-error *ngIf="userForm.invalid">Este não é um email válido</mat-error>
+
       </mat-form-field>
 
 
@@ -26,6 +29,8 @@
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Senha</mat-label>
           <input matInput formControlName="senha"  type="password">
+          <mat-error *ngIf="userForm.invalid">São necessários ao menos 6 caracteres</mat-error>
+
         </mat-form-field>
       </div>
 
